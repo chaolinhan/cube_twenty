@@ -1,0 +1,52 @@
+name: CubeTwenty
+options:
+  bundleIdPrefix: com.chaolinhan
+  deploymentTarget:
+    macOS: "14.0"
+  xcodeVersion: "15.0"
+  createIntermediateGroups: true
+
+packages:
+  Sparkle:
+    url: https://github.com/sparkle-project/Sparkle
+    from: 2.6.0
+
+targets:
+  CubeTwenty:
+    type: application
+    platform: macOS
+    sources:
+      - path: CubeTwenty
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.chaolinhan.CubeTwenty
+        SWIFT_VERSION: "5.9"
+        MACOSX_DEPLOYMENT_TARGET: "14.0"
+        CODE_SIGN_STYLE: Automatic
+        DEVELOPMENT_TEAM: ""
+        ENABLE_HARDENED_RUNTIME: YES
+        CODE_SIGN_ENTITLEMENTS: CubeTwenty/CubeTwenty.entitlements
+        # 非沙盒应用
+        ENABLE_APP_SANDBOX: NO
+    dependencies:
+      - package: Sparkle
+        product: Sparkle
+    info:
+      path: CubeTwenty/Info.plist
+      properties:
+        CFBundleName: CubeTwenty
+        CFBundleDisplayName: CubeTwenty
+        CFBundleShortVersionString: "1.0"
+        CFBundleVersion: "1"
+        CFBundleIconFile: AppIcon
+        # 隐藏 Dock 图标，仅菜单栏运行
+        LSUIElement: true
+        # 通知样式（用户可忽略）
+        NSUserNotificationAlertStyle: alert
+        # 应用描述（通知权限对话框显示）
+        NSHumanReadableCopyright: "Copyright © 2025 Chaolinhan. All rights reserved."
+        # Sparkle 更新配置
+        # SUFeedURL：发布 appcast.xml 后替换为真实地址
+        SUFeedURL: "https://example.com/cubeTwenty/appcast.xml"
+        # SUPublicEDKey：运行 `./bin/generate_keys`（Sparkle 包内）后填入生成的公钥
+        # SUPublicEDKey: "PASTE_YOUR_ED25519_PUBLIC_KEY_HERE"

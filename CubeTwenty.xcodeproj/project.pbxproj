@@ -1,0 +1,423 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0187C5D5C58475E903B96A14 /* PomodoroSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = B279C3D45F5B2685DB4641D4 /* PomodoroSession.swift */; };
+		0CA36072EC7F0DFAD22C0578 /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = D559A8A693151932E68EB4A0 /* Sparkle */; };
+		2835D6B9C3BA62C72D7B305B /* EyeReminderSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D231C9EC07E187EAFD1E8513 /* EyeReminderSection.swift */; };
+		2A67B5A3115309545FB52570 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AFE4539AA2CA6DBD2EF4196 /* SettingsView.swift */; };
+		3618D7B885C64E7977DC33FB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0043780D398A6653A962A8D8 /* Assets.xcassets */; };
+		368B6ADE289F75660467D0D8 /* SparkleUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39463ECBCCA693383B889AF /* SparkleUpdater.swift */; };
+		58C0D38C9178744A51C7F277 /* CubeTwentyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B755FE0E9B05604B87E87A84 /* CubeTwentyApp.swift */; };
+		B1F1C795220D8040BB461FD1 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D4A093A455533DBA2ABACE7 /* AppCoordinator.swift */; };
+		DFC4F4377E5C770B838044F5 /* PomodoroSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EFF4DB1778C00664C8734B /* PomodoroSection.swift */; };
+		E77BBE4BAC39205D39155503 /* PomodoroModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D2CEFD8EC82BEA131B66A8 /* PomodoroModel.swift */; };
+		FA04E327F43EF0C599746F0D /* MenuBarContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BFAC30797FBA281F0B5DA7 /* MenuBarContentView.swift */; };
+		FE98D141F1E9A0F348CEAAF8 /* EyeReminderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F98CE184E58BC896E405BEF /* EyeReminderModel.swift */; };
+		FF74EDC2306551BB0D044AAB /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380691FB98019AE64AD6BAC1 /* NotificationService.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0043780D398A6653A962A8D8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		380691FB98019AE64AD6BAC1 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		49EFF4DB1778C00664C8734B /* PomodoroSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomodoroSection.swift; sourceTree = "<group>"; };
+		50BFB4EA9DC665115E148792 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		5D9722AE9FEC2B908AFD60CD /* CubeTwenty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CubeTwenty.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		68BFAC30797FBA281F0B5DA7 /* MenuBarContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarContentView.swift; sourceTree = "<group>"; };
+		6F98CE184E58BC896E405BEF /* EyeReminderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeReminderModel.swift; sourceTree = "<group>"; };
+		7D4A093A455533DBA2ABACE7 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		9AFE4539AA2CA6DBD2EF4196 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		A3D2CEFD8EC82BEA131B66A8 /* PomodoroModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomodoroModel.swift; sourceTree = "<group>"; };
+		B279C3D45F5B2685DB4641D4 /* PomodoroSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomodoroSession.swift; sourceTree = "<group>"; };
+		B755FE0E9B05604B87E87A84 /* CubeTwentyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubeTwentyApp.swift; sourceTree = "<group>"; };
+		CD0BA5602E80E33C8C1C29B7 /* CubeTwenty.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CubeTwenty.entitlements; sourceTree = "<group>"; };
+		D231C9EC07E187EAFD1E8513 /* EyeReminderSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeReminderSection.swift; sourceTree = "<group>"; };
+		F39463ECBCCA693383B889AF /* SparkleUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SparkleUpdater.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EB119B358C2C2E855277923A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0CA36072EC7F0DFAD22C0578 /* Sparkle in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		12A82E9178FE03D05E72ECF0 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				380691FB98019AE64AD6BAC1 /* NotificationService.swift */,
+				F39463ECBCCA693383B889AF /* SparkleUpdater.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		1F169E44C4D30575B0A6B292 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D231C9EC07E187EAFD1E8513 /* EyeReminderSection.swift */,
+				68BFAC30797FBA281F0B5DA7 /* MenuBarContentView.swift */,
+				49EFF4DB1778C00664C8734B /* PomodoroSection.swift */,
+				9AFE4539AA2CA6DBD2EF4196 /* SettingsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		59E262C37A9623C38A418464 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				6F98CE184E58BC896E405BEF /* EyeReminderModel.swift */,
+				A3D2CEFD8EC82BEA131B66A8 /* PomodoroModel.swift */,
+				B279C3D45F5B2685DB4641D4 /* PomodoroSession.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		8830DF3DAF02AC37A8B6933A /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				0043780D398A6653A962A8D8 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		9F487B9A617C832991CF5D66 /* CubeTwenty */ = {
+			isa = PBXGroup;
+			children = (
+				7D4A093A455533DBA2ABACE7 /* AppCoordinator.swift */,
+				CD0BA5602E80E33C8C1C29B7 /* CubeTwenty.entitlements */,
+				B755FE0E9B05604B87E87A84 /* CubeTwentyApp.swift */,
+				50BFB4EA9DC665115E148792 /* Info.plist */,
+				59E262C37A9623C38A418464 /* Models */,
+				8830DF3DAF02AC37A8B6933A /* Resources */,
+				12A82E9178FE03D05E72ECF0 /* Services */,
+				1F169E44C4D30575B0A6B292 /* Views */,
+			);
+			path = CubeTwenty;
+			sourceTree = "<group>";
+		};
+		A0E22F3BCB91368BF58C1DE8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5D9722AE9FEC2B908AFD60CD /* CubeTwenty.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CA78AEFF19244BDA15F03A7E = {
+			isa = PBXGroup;
+			children = (
+				9F487B9A617C832991CF5D66 /* CubeTwenty */,
+				A0E22F3BCB91368BF58C1DE8 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BD0965205772818A9BD3E214 /* CubeTwenty */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A1AF8768BD8CEDFFF838609B /* Build configuration list for PBXNativeTarget "CubeTwenty" */;
+			buildPhases = (
+				AE7790DE46199FF6245CB284 /* Sources */,
+				E014BE2668374CC245F48D5D /* Resources */,
+				EB119B358C2C2E855277923A /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CubeTwenty;
+			packageProductDependencies = (
+				D559A8A693151932E68EB4A0 /* Sparkle */,
+			);
+			productName = CubeTwenty;
+			productReference = 5D9722AE9FEC2B908AFD60CD /* CubeTwenty.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5B2073AEBD57B969EEC393E0 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					BD0965205772818A9BD3E214 = {
+						DevelopmentTeam = "";
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 30550C4DCBA03D09C71D094B /* Build configuration list for PBXProject "CubeTwenty" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = CA78AEFF19244BDA15F03A7E;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				8EC89C3997C6612656BD6EAA /* XCRemoteSwiftPackageReference "Sparkle" */,
+			);
+			preferredProjectObjectVersion = 77;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BD0965205772818A9BD3E214 /* CubeTwenty */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E014BE2668374CC245F48D5D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3618D7B885C64E7977DC33FB /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AE7790DE46199FF6245CB284 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B1F1C795220D8040BB461FD1 /* AppCoordinator.swift in Sources */,
+				58C0D38C9178744A51C7F277 /* CubeTwentyApp.swift in Sources */,
+				FE98D141F1E9A0F348CEAAF8 /* EyeReminderModel.swift in Sources */,
+				2835D6B9C3BA62C72D7B305B /* EyeReminderSection.swift in Sources */,
+				FA04E327F43EF0C599746F0D /* MenuBarContentView.swift in Sources */,
+				FF74EDC2306551BB0D044AAB /* NotificationService.swift in Sources */,
+				E77BBE4BAC39205D39155503 /* PomodoroModel.swift in Sources */,
+				DFC4F4377E5C770B838044F5 /* PomodoroSection.swift in Sources */,
+				0187C5D5C58475E903B96A14 /* PomodoroSession.swift in Sources */,
+				2A67B5A3115309545FB52570 /* SettingsView.swift in Sources */,
+				368B6ADE289F75660467D0D8 /* SparkleUpdater.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		2A75E920A04828C6E4A58B65 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		3A1C31216634F8EDBBB1680C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = CubeTwenty/CubeTwenty.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_APP_SANDBOX = NO;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = CubeTwenty/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.chaolinhan.CubeTwenty;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.9;
+			};
+			name = Debug;
+		};
+		A57CB9EA359545D5413B528D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		AE8C31BE937CF17F115FAE13 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = CubeTwenty/CubeTwenty.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_APP_SANDBOX = NO;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = CubeTwenty/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.chaolinhan.CubeTwenty;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.9;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		30550C4DCBA03D09C71D094B /* Build configuration list for PBXProject "CubeTwenty" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2A75E920A04828C6E4A58B65 /* Debug */,
+				A57CB9EA359545D5413B528D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		A1AF8768BD8CEDFFF838609B /* Build configuration list for PBXNativeTarget "CubeTwenty" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3A1C31216634F8EDBBB1680C /* Debug */,
+				AE8C31BE937CF17F115FAE13 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		8EC89C3997C6612656BD6EAA /* XCRemoteSwiftPackageReference "Sparkle" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sparkle-project/Sparkle";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.6.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D559A8A693151932E68EB4A0 /* Sparkle */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8EC89C3997C6612656BD6EAA /* XCRemoteSwiftPackageReference "Sparkle" */;
+			productName = Sparkle;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 5B2073AEBD57B969EEC393E0 /* Project object */;
+}
