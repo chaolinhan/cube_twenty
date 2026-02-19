@@ -17,19 +17,22 @@ struct PomodoroSection: View {
 
     var body: some View {
         if model.phase == .idle {
-            Button("开始专注（\(model.focusMinutes) 分钟）") {
-                model.start()
+            Button { model.start() } label: {
+                Label("开始专注（\(model.focusMinutes) 分钟）", systemImage: "timer")
             }
         } else {
             Text(statusText)
                 .foregroundStyle(model.isRunning ? .primary : .secondary)
 
-            Button(model.isRunning ? "暂停" : "继续") {
+            Button {
                 model.isRunning ? model.pause() : model.start()
+            } label: {
+                Label(model.isRunning ? "暂停" : "继续",
+                      systemImage: model.isRunning ? "pause.fill" : "play.fill")
             }
 
-            Button("重置") {
-                model.reset()
+            Button { model.reset() } label: {
+                Label("重置", systemImage: "arrow.counterclockwise")
             }
         }
 

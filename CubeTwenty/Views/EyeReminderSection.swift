@@ -18,8 +18,8 @@ struct EyeReminderSection: View {
             }
 
             // 手动立即触发
-            Button("立即提醒") {
-                model.triggerNow()
+            Button { model.triggerNow() } label: {
+                Label("立即提醒", systemImage: "eye.trianglebadge.exclamationmark")
             }
         }
     }
