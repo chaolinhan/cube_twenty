@@ -161,10 +161,10 @@ final class PomodoroModel: ObservableObject {
 
         case .shortBreak, .longBreak:
             NotificationService.shared.sendPomodoroBreakComplete()
-            phase = .idle
-            isRunning = false
-            timeRemaining = 0
-            minutesRemaining = 0
+            phase = .focusing
+            setTimeRemaining(focusMinutes * 60)
+            isRunning = true
+            startTicker()
 
         case .idle:
             break

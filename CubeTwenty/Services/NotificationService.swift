@@ -39,7 +39,7 @@ final class NotificationService {
         send(
             identifier: "pomodoro-break-complete",
             title: "休息结束",
-            body: "准备好了吗？继续专注！🍅"
+            body: "休息结束，自动开始专注 🍅"
         )
     }
 
