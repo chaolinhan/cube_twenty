@@ -110,6 +110,7 @@ final class EyeReminderModel: ObservableObject {
 
     private func fireReminder() {
         NotificationService.shared.sendEyeReminder()
+        EyeBreakPanelController.shared.show()
         // 更新下次提醒时间（repeating 模式下 timer 会自动再次触发）
         nextReminderDate = Date().addingTimeInterval(TimeInterval(intervalMinutes * 60))
     }

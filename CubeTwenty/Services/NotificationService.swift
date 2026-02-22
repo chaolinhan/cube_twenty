@@ -50,7 +50,15 @@ final class NotificationService {
         send(
             identifier: "eye-reminder-\(Date().timeIntervalSince1970)",
             title: "眼部休息提醒",
-            body: "看向 20 尺（约 6 米）以外的地方，持续 20 秒"
+            body: "请看向 6 米外，正在倒计时 20 秒 👁"
+        )
+    }
+
+    func sendEyeBreakComplete() {
+        send(
+            identifier: "eye-break-complete-\(Date().timeIntervalSince1970)",
+            title: "眼部休息完成",
+            body: "好了，可以回来了 ✅"
         )
     }
 

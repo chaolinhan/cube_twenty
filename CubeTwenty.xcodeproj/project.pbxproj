@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 63;
+	objectVersion = 77;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -17,6 +17,7 @@
 		B1F1C795220D8040BB461FD1 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D4A093A455533DBA2ABACE7 /* AppCoordinator.swift */; };
 		DFC4F4377E5C770B838044F5 /* PomodoroSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EFF4DB1778C00664C8734B /* PomodoroSection.swift */; };
 		E77BBE4BAC39205D39155503 /* PomodoroModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D2CEFD8EC82BEA131B66A8 /* PomodoroModel.swift */; };
+		E8AB81CEC0C50B1AC31A8C5E /* EyeBreakPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4F18F2D45723A296F4E165 /* EyeBreakPanel.swift */; };
 		FA04E327F43EF0C599746F0D /* MenuBarContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BFAC30797FBA281F0B5DA7 /* MenuBarContentView.swift */; };
 		FE98D141F1E9A0F348CEAAF8 /* EyeReminderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F98CE184E58BC896E405BEF /* EyeReminderModel.swift */; };
 		FF74EDC2306551BB0D044AAB /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380691FB98019AE64AD6BAC1 /* NotificationService.swift */; };
@@ -25,6 +26,7 @@
 /* Begin PBXFileReference section */
 		0043780D398A6653A962A8D8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		380691FB98019AE64AD6BAC1 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		3D4F18F2D45723A296F4E165 /* EyeBreakPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreakPanel.swift; sourceTree = "<group>"; };
 		49EFF4DB1778C00664C8734B /* PomodoroSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomodoroSection.swift; sourceTree = "<group>"; };
 		50BFB4EA9DC665115E148792 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		5D9722AE9FEC2B908AFD60CD /* CubeTwenty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CubeTwenty.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -64,6 +66,7 @@
 		1F169E44C4D30575B0A6B292 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				3D4F18F2D45723A296F4E165 /* EyeBreakPanel.swift */,
 				D231C9EC07E187EAFD1E8513 /* EyeReminderSection.swift */,
 				68BFAC30797FBA281F0B5DA7 /* MenuBarContentView.swift */,
 				49EFF4DB1778C00664C8734B /* PomodoroSection.swift */,
@@ -151,7 +154,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
-				LastUpgradeCheck = 2620;
+				LastUpgradeCheck = 1500;
 				TargetAttributes = {
 					BD0965205772818A9BD3E214 = {
 						DevelopmentTeam = "";
@@ -172,6 +175,7 @@
 			packageReferences = (
 				8EC89C3997C6612656BD6EAA /* XCRemoteSwiftPackageReference "Sparkle" */,
 			);
+			preferredProjectObjectVersion = 77;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -198,6 +202,7 @@
 			files = (
 				B1F1C795220D8040BB461FD1 /* AppCoordinator.swift in Sources */,
 				58C0D38C9178744A51C7F277 /* CubeTwentyApp.swift in Sources */,
+				E8AB81CEC0C50B1AC31A8C5E /* EyeBreakPanel.swift in Sources */,
 				FE98D141F1E9A0F348CEAAF8 /* EyeReminderModel.swift in Sources */,
 				2835D6B9C3BA62C72D7B305B /* EyeReminderSection.swift in Sources */,
 				FA04E327F43EF0C599746F0D /* MenuBarContentView.swift in Sources */,
@@ -247,11 +252,9 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -272,7 +275,6 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
-				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -286,7 +288,6 @@
 				CODE_SIGN_ENTITLEMENTS = CubeTwenty/CubeTwenty.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_APP_SANDBOX = NO;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -336,11 +337,9 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -354,7 +353,6 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
-				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
@@ -368,7 +366,6 @@
 				CODE_SIGN_ENTITLEMENTS = CubeTwenty/CubeTwenty.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_APP_SANDBOX = NO;
 				ENABLE_HARDENED_RUNTIME = YES;
