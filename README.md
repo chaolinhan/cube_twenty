@@ -16,6 +16,16 @@
 
 ---
 
+## 什么是 20-20-20 规则？
+
+长时间盯着屏幕会导致眼睛疲劳（视觉疲劳）。**20-20-20 规则**由眼科医生提出：
+
+> 每工作 **20 分钟**，看向至少 **20 尺**（约 6 米）以外的地方，持续 **20 秒**。
+
+这能让眼部肌肉得到放松，有效缓解数字眼疲劳症状。详见 [Canadian Association of Optometrists — 20-20-20 Rule](https://opto.ca/eye-health-library/20-20-20-rule)。
+
+---
+
 ## 功能
 
 ### 🧿 20-20-20 护眼提醒
@@ -95,6 +105,12 @@ open CubeTwenty.xcodeproj
 4. 在 `project.yml` 中填入你的 `DEVELOPMENT_TEAM`，通过 Xcode Archive 导出并签名
 
 详细步骤参见 [CLAUDE.md](CLAUDE.md)。
+
+---
+
+## 致谢
+
+- [ProjectEye](https://github.com/Planshit/ProjectEye) — Windows 平台的 20-20-20 护眼工具，本项目的功能灵感来源
 
 ---
 
