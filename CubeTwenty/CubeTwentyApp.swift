@@ -10,7 +10,7 @@ struct CubeTwentyApp: App {
     }
 
     var body: some Scene {
-        MenuBarExtra("CubeTwenty", systemImage: "eye.circle") {
+        MenuBarExtra("CubeTwenty", systemImage: "sunglasses.fill") {
             MenuBarContentView()
                 .environmentObject(coordinator.eyeReminderModel)
                 .environmentObject(coordinator.pomodoroModel)
