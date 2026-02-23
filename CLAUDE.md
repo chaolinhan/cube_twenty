@@ -52,6 +52,7 @@ CubeTwenty/
 ├── Views/
 │   ├── MenuBarContentView.swift  # 菜单根视图，组合两个 Section
 │   ├── EyeReminderSection.swift  # 20-20-20 菜单区块
+│   ├── EyeBreakPanel.swift       # 20 秒倒计时浮动小窗（NSPanel + SwiftUI）
 │   ├── PomodoroSection.swift     # 番茄钟菜单区块（带 SF Symbol 图标）
 │   └── SettingsView.swift        # 设置窗口（General / 眼部提醒 / 番茄钟 三 Tab）
 ├── Services/
@@ -70,15 +71,18 @@ CubeTwenty/
 ### 20-20-20 眼部提醒
 
 - **默认间隔**：20 分钟（可在设置中自定义，范围 5–60 分钟）
-- **提醒方式**：系统通知（`UNUserNotificationCenter`），标题"眼部休息提醒"
+- **仅计算屏幕使用时间**：显示器熄屏、锁屏、系统睡眠时自动暂停；屏幕重新可用时重置为完整间隔
+- **屏幕状态监听**：`NSWorkspace.screensDidSleep/Wake` + `DistributedNotificationCenter` 的 `com.apple.screenIsLocked/Unlocked`，由 `AppCoordinator` 协调
+- **提醒方式**：系统通知 + `EyeBreakPanel` 浮动小窗倒计时（见下）
+- **20 秒倒计时小窗**：提醒触发时在屏幕右上角弹出 `NSPanel`，显示 20→0 秒倒计时，结束时播放 Glass 音效并发送"好了，可以回来了"通知；支持提前结束；不抢夺键盘焦点（`.nonactivatingPanel` + `orderFrontRegardless()`）
 - **菜单显示**：启用/禁用开关 + 下次提醒时间 + "立即提醒"按钮
-- **与番茄钟联动**：番茄钟进入休息阶段时计时器暂停，休息结束后自动恢复并重置计时
+- **与番茄钟联动**：番茄钟进入休息阶段时计时器暂停，休息结束且屏幕可用时恢复并重置计时
 
 ### 番茄钟
 
 - **默认时长**：专注 25 分钟，短休息 5 分钟，长休息 15 分钟
 - **长休息规则**：每完成 4 个番茄周期后触发长休息（N 可在设置中配置）
-- **状态机**：`idle → focusing → shortBreak → longBreak → idle`
+- **状态机**：`idle → focusing → shortBreak/longBreak → focusing → …`（休息结束后自动开始下一轮专注）
 - **菜单栏图标**：静态 SF Symbol `eye.circle`（不在图标上显示倒计时）
 - **菜单显示**：当前阶段 + 剩余时间（分钟精度）+ 控制按钮（带 SF Symbol 图标）
 - **通知**：阶段切换时发送系统通知
@@ -151,6 +155,16 @@ timer.resume()
 - [ ] Sparkle 密钥：运行 `./bin/generate_keys`（Sparkle 包内），将公钥填入 `Info.plist` 的 `SUPublicEDKey`
 - [ ] appcast.xml：参考 Sparkle 文档生成并托管到真实服务器，更新 `SUFeedURL`
 - [ ] Developer ID 签名：在 `project.yml` 填入 `DEVELOPMENT_TEAM`，Xcode Archive 导出
+
+### Phase 8：体验优化 ✅
+- [x] **屏幕感知计时**：`AppCoordinator` 监听 `NSWorkspace.screensDidSleep/Wake` 和 `DistributedNotificationCenter` 锁屏通知，锁屏/熄屏时暂停眼部计时，二者均恢复后重置并继续
+- [x] **20 秒倒计时小窗**：新增 `EyeBreakPanel.swift`（`EyeBreakViewModel` + `EyeBreakPanelController` + `EyeBreakPanelView`），提醒触发时在鼠标所在屏幕右上角弹出不抢焦点浮动窗口
+  - `.nonactivatingPanel` + `orderFrontRegardless()` 解决 LSUIElement 无激活权限问题
+  - 倒计时 ≤5 秒数字变绿，`contentTransition(.numericText(countsDown:))` 滚动动画
+  - 结束时播放系统 Glass 音效，发送"好了，可以回来了"通知
+  - 支持提前结束；所有退出路径经 `NSWindowDelegate.windowWillClose` 统一清理
+- [x] **番茄钟自动续期**：休息结束后自动进入下一轮专注，无需手动点击开始
+- [x] 开源准备：MIT LICENSE + README.md，推送至 GitHub
 
 ---
 
