@@ -1,6 +1,7 @@
 import SwiftUI
 import ServiceManagement
 import UserNotifications
+import ApplicationServices
 
 // MARK: - 根视图
 
@@ -30,6 +31,7 @@ private struct GeneralSettingsTab: View {
 
     @State private var autoLaunchEnabled = SMAppService.mainApp.status == .enabled
     @State private var notificationStatus: UNAuthorizationStatus = .notDetermined
+    @State private var accessibilityGranted = AXIsProcessTrusted()
 
     var body: some View {
         Form {
@@ -43,7 +45,6 @@ private struct GeneralSettingsTab: View {
                                 try SMAppService.mainApp.unregister()
                             }
                         } catch {
-                            // 操作失败时回滚开关状态
                             autoLaunchEnabled = !enabled
                         }
                     }
@@ -63,9 +64,33 @@ private struct GeneralSettingsTab: View {
                     }
                 }
             }
+
+            Section {
+                LabeledContent("当前状态") {
+                    Text(accessibilityGranted ? "已授权" : "未授权")
+                        .foregroundStyle(accessibilityGranted ? .green : .orange)
+                }
+
+                if !accessibilityGranted {
+                    Button("请求辅助功能权限...") {
+                        let options = [kAXTrustedCheckOptionPrompt.takeUnretainedValue(): true] as CFDictionary
+                        AXIsProcessTrustedWithOptions(options)
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                            accessibilityGranted = AXIsProcessTrusted()
+                        }
+                    }
+                }
+            } header: {
+                Text("辅助功能权限")
+            } footer: {
+                Text("全屏时暂停提醒功能需要辅助功能权限")
+            }
         }
         .formStyle(.grouped)
         .padding(.vertical, 8)
+        .onAppear {
+            accessibilityGranted = AXIsProcessTrusted()
+        }
         .task {
             let settings = await UNUserNotificationCenter.current().notificationSettings()
             notificationStatus = settings.authorizationStatus
@@ -94,6 +119,12 @@ private struct EyeReminderSettingsTab: View {
                 }
             } footer: {
                 Text("20-20-20 法则建议保持 20 分钟间隔")
+            }
+
+            Section {
+                Toggle("全屏时暂停提醒", isOn: $model.pauseWhenFullscreen)
+            } footer: {
+                Text("当前台应用处于全屏模式时，自动暂停眼部提醒计时（需辅助功能权限）")
             }
         }
         .formStyle(.grouped)

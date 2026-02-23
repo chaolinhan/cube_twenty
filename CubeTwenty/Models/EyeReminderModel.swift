@@ -21,13 +21,19 @@ final class EyeReminderModel: ObservableObject {
         }
     }
 
+    /// 全屏应用时暂停提醒，默认开启
+    @Published var pauseWhenFullscreen: Bool = true {
+        didSet { UserDefaults.standard.set(pauseWhenFullscreen, forKey: Keys.pauseWhenFullscreen) }
+    }
+
     // MARK: - 私有
 
     private var dispatchTimer: DispatchSourceTimer?
 
     private enum Keys {
-        static let enabled  = "eyeReminderEnabled"
-        static let interval = "eyeReminderInterval"
+        static let enabled             = "eyeReminderEnabled"
+        static let interval            = "eyeReminderInterval"
+        static let pauseWhenFullscreen = "eyeReminderPauseWhenFullscreen"
     }
 
     // MARK: - 初始化
@@ -36,6 +42,9 @@ final class EyeReminderModel: ObservableObject {
         let savedEnabled = UserDefaults.standard.bool(forKey: Keys.enabled)
         self.isEnabled = savedEnabled
         self.intervalMinutes = UserDefaults.standard.object(forKey: Keys.interval) as? Int ?? 20
+        if let saved = UserDefaults.standard.object(forKey: Keys.pauseWhenFullscreen) as? Bool {
+            self.pauseWhenFullscreen = saved
+        }
         if savedEnabled {
             // 延迟一个 runloop，等 App 完全启动后再启动计时器
             DispatchQueue.main.async { [weak self] in

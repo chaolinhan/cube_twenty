@@ -1,4 +1,5 @@
 import AppKit
+import ApplicationServices
 import Combine
 import SwiftData
 
@@ -22,6 +23,8 @@ final class AppCoordinator: ObservableObject {
     /// 屏幕状态：两个独立标志，同时为 false 时才视为"屏幕可用"
     private var displayIsSleeping = false   // screensDidSleep / screensDidWake
     private var screenIsLocked    = false   // com.apple.screenIsLocked / Unlocked
+    /// 前台应用是否处于全屏模式（需辅助功能权限；无权限时始终为 false）
+    private var appIsFullscreen   = false
 
     private var cancellables    = Set<AnyCancellable>()
     /// addObserver(forName:...) 返回的 token，分源存储以便正确清理
@@ -37,6 +40,7 @@ final class AppCoordinator: ObservableObject {
         pomodoroModel.configure(modelContext: ModelContext(modelContainer))
         setupCoordination()
         setupScreenMonitoring()
+        setupFullscreenMonitoring()
     }
 
     deinit {
@@ -48,10 +52,19 @@ final class AppCoordinator: ObservableObject {
 
     private func setupCoordination() {
         pomodoroModel.$phase
-            .dropFirst()                    // 忽略初始 .idle，避免启动时误触
+            .dropFirst()
             .receive(on: DispatchQueue.main)
             .sink { [weak self] phase in
                 self?.handlePhaseChange(phase)
+            }
+            .store(in: &cancellables)
+
+        // 用户切换"全屏时暂停"开关时，立即重新评估当前状态
+        eyeReminderModel.$pauseWhenFullscreen
+            .dropFirst()
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] _ in
+                self?.updateFullscreenState()
             }
             .store(in: &cancellables)
     }
@@ -113,9 +126,68 @@ final class AppCoordinator: ObservableObject {
         eyeReminderModel.pause()
     }
 
-    /// 屏幕完全可用（亮屏 + 未锁定）且番茄钟不在休息 → 重置并恢复眼部提醒计时
+    /// 屏幕完全可用（亮屏 + 未锁定）且番茄钟不在休息、非全屏 → 重置并恢复眼部提醒计时
     private func resumeIfFullyActive() {
-        guard !displayIsSleeping, !screenIsLocked, !eyePausedByPomodoro else { return }
-        eyeReminderModel.resume()   // 内部调用 startTimer()，重置为完整间隔
+        guard !displayIsSleeping, !screenIsLocked, !eyePausedByPomodoro, !appIsFullscreen else { return }
+        eyeReminderModel.resume()
+    }
+
+    // MARK: - 全屏监听
+
+    private func setupFullscreenMonitoring() {
+        let wsnc = NSWorkspace.shared.notificationCenter
+        let fullscreenObservers: [NSObjectProtocol] = [
+            // 切换 Space（全屏进入/退出通常会创建新 Space）
+            wsnc.addObserver(forName: NSWorkspace.activeSpaceDidChangeNotification,
+                             object: nil, queue: .main) { [weak self] _ in
+                self?.updateFullscreenState()
+            },
+            // 切换前台应用
+            wsnc.addObserver(forName: NSWorkspace.didActivateApplicationNotification,
+                             object: nil, queue: .main) { [weak self] _ in
+                self?.updateFullscreenState()
+            },
+        ]
+        wsObservers.append(contentsOf: fullscreenObservers)
+    }
+
+    private func updateFullscreenState() {
+        guard eyeReminderModel.pauseWhenFullscreen else {
+            // 功能已关闭：若之前因全屏而暂停，则清除并尝试恢复
+            if appIsFullscreen {
+                appIsFullscreen = false
+                resumeIfFullyActive()
+            }
+            return
+        }
+
+        let wasFullscreen = appIsFullscreen
+        appIsFullscreen = isFrontmostAppFullscreen()
+
+        if appIsFullscreen && !wasFullscreen {
+            pauseIfNeeded()
+        } else if !appIsFullscreen && wasFullscreen {
+            resumeIfFullyActive()
+        }
+    }
+
+    /// 通过 Accessibility API 检查前台应用是否有全屏窗口。
+    /// 未授权辅助功能权限时返回 false（优雅降级）。
+    private func isFrontmostAppFullscreen() -> Bool {
+        guard let frontApp = NSWorkspace.shared.frontmostApplication else { return false }
+        let axApp = AXUIElementCreateApplication(frontApp.processIdentifier)
+
+        var windowsRef: CFTypeRef?
+        guard AXUIElementCopyAttributeValue(axApp, kAXWindowsAttribute as CFString, &windowsRef) == .success,
+              let windows = windowsRef as? [AXUIElement] else { return false }
+
+        for window in windows {
+            var ref: CFTypeRef?
+            if AXUIElementCopyAttributeValue(window, "AXFullScreen" as CFString, &ref) == .success,
+               let isFullscreen = ref as? Bool, isFullscreen {
+                return true
+            }
+        }
+        return false
     }
 }
