@@ -53,6 +53,8 @@ CubeTwenty/
 │   ├── MenuBarContentView.swift  # 菜单根视图，组合两个 Section
 │   ├── EyeReminderSection.swift  # 20-20-20 菜单区块
 │   ├── EyeBreakPanel.swift       # 20 秒倒计时浮动小窗（NSPanel + SwiftUI）
+│   ├── AboutPanel.swift          # 关于窗口（NSPanel + SwiftUI）
+│   ├── StatsPanel.swift          # 番茄钟统计小窗（NSPanel + SwiftUI + @Query）
 │   ├── PomodoroSection.swift     # 番茄钟菜单区块（带 SF Symbol 图标）
 │   └── SettingsView.swift        # 设置窗口（General / 眼部提醒 / 番茄钟 三 Tab）
 ├── Services/
@@ -60,7 +62,7 @@ CubeTwenty/
 │   └── SparkleUpdater.swift      # SPUStandardUpdaterController 封装
 └── Resources/
     └── Assets.xcassets/
-        ├── AppIcon.appiconset/   # 🧿 emoji，极简浅蓝背景，CoreText 生成
+        ├── AppIcon.appiconset/   # 🕶️ emoji，极简浅蓝背景，CoreText 生成
         └── MenuBarIcon.imageset/ # 菜单栏模板图像
 ```
 
@@ -73,9 +75,10 @@ CubeTwenty/
 - **默认间隔**：20 分钟（可在设置中自定义，范围 5–60 分钟）
 - **仅计算屏幕使用时间**：显示器熄屏、锁屏、系统睡眠时自动暂停；屏幕重新可用时重置为完整间隔
 - **屏幕状态监听**：`NSWorkspace.screensDidSleep/Wake` + `DistributedNotificationCenter` 的 `com.apple.screenIsLocked/Unlocked`，由 `AppCoordinator` 协调
+- **全屏应用时暂停**：通过 Accessibility API（`AXFullScreen` 属性）检测前台应用是否全屏，事件驱动（`activeSpaceDidChange` + `didActivateApplication` 通知）；需辅助功能权限，未授权时静默降级；可在设置中开关（`pauseWhenFullscreen`）
 - **提醒方式**：系统通知 + `EyeBreakPanel` 浮动小窗倒计时（见下）
 - **20 秒倒计时小窗**：提醒触发时在屏幕右上角弹出 `NSPanel`，显示 20→0 秒倒计时，结束时播放 Glass 音效并发送"好了，可以回来了"通知；支持提前结束；不抢夺键盘焦点（`.nonactivatingPanel` + `orderFrontRegardless()`）
-- **菜单显示**：启用/禁用开关 + 下次提醒时间 + "立即提醒"按钮
+- **菜单显示**：启用/禁用开关 + 下次提醒时间（全屏时显示"全屏应用中，已暂停计时"）+ "立即提醒"按钮
 - **与番茄钟联动**：番茄钟进入休息阶段时计时器暂停，休息结束且屏幕可用时恢复并重置计时
 
 ### 番茄钟
@@ -83,17 +86,17 @@ CubeTwenty/
 - **默认时长**：专注 25 分钟，短休息 5 分钟，长休息 15 分钟
 - **长休息规则**：每完成 4 个番茄周期后触发长休息（N 可在设置中配置）
 - **状态机**：`idle → focusing → shortBreak/longBreak → focusing → …`（休息结束后自动开始下一轮专注）
-- **菜单栏图标**：静态 SF Symbol `eye.circle`（不在图标上显示倒计时）
+- **菜单栏图标**：静态 SF Symbol `sunglasses.fill`（不在图标上显示倒计时）
 - **菜单显示**：当前阶段 + 剩余时间（分钟精度）+ 控制按钮（带 SF Symbol 图标）
 - **通知**：阶段切换时发送系统通知
-- **会话历史**：每完成一个完整专注周期写入 SwiftData 记录，菜单显示今日/本周完成数
+- **会话历史**：每完成一个完整专注周期写入 SwiftData 记录；菜单提供"查看统计..."按钮，打开统计小窗（`StatsPanel`）展示本周热力图、今日/本周/累计数字、今日专注时长
 
 ### 设置项（独立 Settings 窗口，三 Tab）
 
 | Tab | 内容 |
 |-----|------|
-| 通用 | 开机自启（`SMAppService`）、通知权限状态与跳转 |
-| 眼部提醒 | 提醒间隔步进器（5–60 分钟，步长 5） |
+| 通用 | 开机自启（`SMAppService`）、通知权限状态与跳转、辅助功能权限状态与授权 |
+| 眼部提醒 | 提醒间隔步进器（5–60 分钟，步长 5）、全屏时暂停开关 |
 | 番茄钟 | 专注/短休息/长休息时长、触发长休息的番茄数 |
 
 所有配置通过 `@Published var + didSet` 写入 `UserDefaults`，`init()` 读取还原。
@@ -147,7 +150,7 @@ timer.resume()
 - [x] `@Environment(\.openSettings)` + `NSApp.activate()` 解决 LSUIElement 焦点问题
 
 ### Phase 7：收尾与分发 ✅（代码完成，分发步骤待执行）
-- [x] `SparkleUpdater` 封装 + "检查更新..." 菜单项
+- [x] `SparkleUpdater` 封装；"检查更新"入口移至关于窗口
 - [x] `CubeTwenty.entitlements`（Hardened Runtime，非沙盒）
 - [x] `SUFeedURL` 占位（待替换为真实地址）
 - [x] App 图标：🧿 emoji，极简浅蓝背景，CoreText + CoreGraphics Swift 脚本生成
@@ -165,6 +168,14 @@ timer.resume()
   - 支持提前结束；所有退出路径经 `NSWindowDelegate.windowWillClose` 统一清理
 - [x] **番茄钟自动续期**：休息结束后自动进入下一轮专注，无需手动点击开始
 - [x] 开源准备：MIT LICENSE + README.md，推送至 GitHub
+
+### Phase 9：功能完善 ✅
+- [x] App 图标换为 🕶️ emoji，菜单栏图标换为 `sunglasses.fill`
+- [x] 关于窗口（`AboutPanel`）：版本信息、LTN Studio 署名、检查更新按钮、GitHub 链接
+- [x] 设置 Stepper UI 改进：标签与数值视觉分离（`HStack` + `.labelsHidden()`）
+- [x] 全屏时暂停眼部提醒：AX API（`AXFullScreen`）检测，事件驱动无轮询，辅助功能权限优雅降级；菜单显示暂停状态文字
+- [x] 番茄钟统计小窗（`StatsPanel`）：本周热力图 + 今日/本周/累计数字 + 今日专注时长
+- [x] 首次 GitHub Release：v1.0 DMG（未签名直接分发）
 
 ---
 

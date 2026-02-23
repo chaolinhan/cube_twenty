@@ -28,10 +28,12 @@
 
 ## 功能
 
-### 🧿 20-20-20 护眼提醒
+### 🕶️ 20-20-20 护眼提醒
 每隔 20 分钟提醒你看向 20 尺（约 6 米）以外的地方，持续 20 秒，有效缓解视觉疲劳。
 
 - **仅计算屏幕使用时间**：锁屏、熄屏、系统睡眠时自动暂停，唤醒后重置为完整间隔
+- **20 秒倒计时浮窗**：提醒触发时在屏幕右上角弹出小窗，20→0 秒倒计时，结束时播放提示音；支持提前关闭
+- **全屏应用时自动暂停**：观看视频、视频会议等全屏场景不被打扰，切回普通窗口后自动恢复（需辅助功能权限，可在设置中开关）
 - 可自定义提醒间隔（5–60 分钟）
 - 支持手动立即触发
 
@@ -40,7 +42,8 @@
 
 - 可自定义专注时长（默认 25 分钟）、短休息（5 分钟）、长休息（15 分钟）
 - 每完成 N 个番茄后自动触发长休息（N 可配置，默认 4）
-- 今日 / 本周完成数统计（SwiftData 持久化）
+- 休息结束后自动开始下一轮专注
+- 统计小窗：本周每日热力图、今日 / 本周 / 累计完成数、今日专注时长（SwiftData 持久化）
 
 ### 🔗 两者联动
 番茄钟进入休息阶段时，护眼提醒自动暂停；休息结束后自动恢复并重置计时。
@@ -48,7 +51,8 @@
 ### 其他
 - 菜单栏常驻，无 Dock 图标，轻量不打扰
 - 开机自启（可在设置中关闭）
-- 自动更新（Sparkle 2.x）
+- 关于窗口：版本信息、检查更新入口
+- 自动更新（Sparkle 2.x，需配置 appcast）
 
 ---
 
@@ -81,8 +85,8 @@ brew install xcodegen
 
 ```bash
 # 1. Clone 仓库
-git clone https://github.com/<your-username>/CubeTwenty.git
-cd CubeTwenty
+git clone https://github.com/chaolinhan/cube_twenty.git
+cd cube_twenty
 
 # 2. 生成 Xcode 项目
 xcodegen generate
@@ -116,4 +120,4 @@ open CubeTwenty.xcodeproj
 
 ## License
 
-[MIT](LICENSE) © 2025 Chaolinhan
+[MIT](LICENSE) © 2026 LTN Studio
