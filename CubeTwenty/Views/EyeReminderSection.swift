@@ -11,8 +11,12 @@ struct EyeReminderSection: View {
         }
 
         if model.isEnabled {
-            // 下次提醒时间
-            if let next = model.nextReminderDate {
+            if model.isPausedByFullscreen {
+                // 全屏暂停状态
+                Text("全屏应用中，已暂停计时")
+                    .foregroundStyle(.secondary)
+            } else if let next = model.nextReminderDate {
+                // 下次提醒时间
                 Text("下次提醒：\(next.formatted(date: .omitted, time: .shortened))")
                     .foregroundStyle(.secondary)
             }

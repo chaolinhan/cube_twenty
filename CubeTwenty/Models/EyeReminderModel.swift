@@ -26,6 +26,9 @@ final class EyeReminderModel: ObservableObject {
         didSet { UserDefaults.standard.set(pauseWhenFullscreen, forKey: Keys.pauseWhenFullscreen) }
     }
 
+    /// 当前是否因全屏应用而暂停（由 AppCoordinator 更新，供菜单 UI 显示）
+    @Published var isPausedByFullscreen = false
+
     // MARK: - 私有
 
     private var dispatchTimer: DispatchSourceTimer?

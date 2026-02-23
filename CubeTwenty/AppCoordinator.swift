@@ -153,9 +153,9 @@ final class AppCoordinator: ObservableObject {
 
     private func updateFullscreenState() {
         guard eyeReminderModel.pauseWhenFullscreen else {
-            // 功能已关闭：若之前因全屏而暂停，则清除并尝试恢复
             if appIsFullscreen {
                 appIsFullscreen = false
+                eyeReminderModel.isPausedByFullscreen = false
                 resumeIfFullyActive()
             }
             return
@@ -163,6 +163,7 @@ final class AppCoordinator: ObservableObject {
 
         let wasFullscreen = appIsFullscreen
         appIsFullscreen = isFrontmostAppFullscreen()
+        eyeReminderModel.isPausedByFullscreen = appIsFullscreen
 
         if appIsFullscreen && !wasFullscreen {
             pauseIfNeeded()
