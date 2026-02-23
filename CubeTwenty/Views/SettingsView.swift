@@ -82,11 +82,16 @@ private struct EyeReminderSettingsTab: View {
     var body: some View {
         Form {
             Section {
-                Stepper("每 \(model.intervalMinutes) 分钟提醒一次",
-                        value: $model.intervalMinutes,
-                        in: 5...60, step: 5)
-            } header: {
-                Text("")
+                HStack {
+                    Text("提醒间隔")
+                    Spacer()
+                    Text("\(model.intervalMinutes) 分钟")
+                        .monospacedDigit()
+                        .foregroundStyle(.secondary)
+                    Stepper("", value: $model.intervalMinutes,
+                            in: 5...60, step: 5)
+                        .labelsHidden()
+                }
             } footer: {
                 Text("20-20-20 法则建议保持 20 分钟间隔")
             }
@@ -105,17 +110,45 @@ private struct PomodoroSettingsTab: View {
     var body: some View {
         Form {
             Section("时长") {
-                Stepper("专注 \(model.focusMinutes) 分钟",
-                        value: $model.focusMinutes, in: 5...90, step: 5)
-                Stepper("短休息 \(model.shortBreakMinutes) 分钟",
-                        value: $model.shortBreakMinutes, in: 1...30, step: 1)
-                Stepper("长休息 \(model.longBreakMinutes) 分钟",
-                        value: $model.longBreakMinutes, in: 5...60, step: 5)
+                HStack {
+                    Text("专注时长")
+                    Spacer()
+                    Text("\(model.focusMinutes) 分钟")
+                        .monospacedDigit()
+                        .foregroundStyle(.secondary)
+                    Stepper("", value: $model.focusMinutes, in: 5...90, step: 5)
+                        .labelsHidden()
+                }
+                HStack {
+                    Text("短休息")
+                    Spacer()
+                    Text("\(model.shortBreakMinutes) 分钟")
+                        .monospacedDigit()
+                        .foregroundStyle(.secondary)
+                    Stepper("", value: $model.shortBreakMinutes, in: 1...30, step: 1)
+                        .labelsHidden()
+                }
+                HStack {
+                    Text("长休息")
+                    Spacer()
+                    Text("\(model.longBreakMinutes) 分钟")
+                        .monospacedDigit()
+                        .foregroundStyle(.secondary)
+                    Stepper("", value: $model.longBreakMinutes, in: 5...60, step: 5)
+                        .labelsHidden()
+                }
             }
 
             Section {
-                Stepper("每 \(model.pomodorosBeforeLongBreak) 个番茄后触发",
-                        value: $model.pomodorosBeforeLongBreak, in: 2...8, step: 1)
+                HStack {
+                    Text("长休息间隔")
+                    Spacer()
+                    Text("\(model.pomodorosBeforeLongBreak) 个番茄")
+                        .monospacedDigit()
+                        .foregroundStyle(.secondary)
+                    Stepper("", value: $model.pomodorosBeforeLongBreak, in: 2...8, step: 1)
+                        .labelsHidden()
+                }
             } header: {
                 Text("长休息")
             } footer: {

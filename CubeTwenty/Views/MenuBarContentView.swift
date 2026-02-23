@@ -31,10 +31,11 @@ struct MenuBarContentView: View {
             Label("偏好设置...", systemImage: "gear")
         }
 
-        Button("检查更新...") {
-            updater.checkForUpdates()
+        Button {
+            AboutPanelController.shared.show(updater: updater)
+        } label: {
+            Label("关于 CubeTwenty", systemImage: "info.circle")
         }
-        .disabled(!updater.canCheckForUpdates)
 
         Button("退出 CubeTwenty") {
             NSApplication.shared.terminate(nil)

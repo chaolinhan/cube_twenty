@@ -14,6 +14,7 @@
 		3618D7B885C64E7977DC33FB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0043780D398A6653A962A8D8 /* Assets.xcassets */; };
 		368B6ADE289F75660467D0D8 /* SparkleUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39463ECBCCA693383B889AF /* SparkleUpdater.swift */; };
 		58C0D38C9178744A51C7F277 /* CubeTwentyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B755FE0E9B05604B87E87A84 /* CubeTwentyApp.swift */; };
+		637B8D505EC29A09C2F3FB82 /* AboutPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BFB315298F139E8C90B2765 /* AboutPanel.swift */; };
 		B1F1C795220D8040BB461FD1 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D4A093A455533DBA2ABACE7 /* AppCoordinator.swift */; };
 		DFC4F4377E5C770B838044F5 /* PomodoroSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EFF4DB1778C00664C8734B /* PomodoroSection.swift */; };
 		E77BBE4BAC39205D39155503 /* PomodoroModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D2CEFD8EC82BEA131B66A8 /* PomodoroModel.swift */; };
@@ -34,6 +35,7 @@
 		6F98CE184E58BC896E405BEF /* EyeReminderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeReminderModel.swift; sourceTree = "<group>"; };
 		7D4A093A455533DBA2ABACE7 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		9AFE4539AA2CA6DBD2EF4196 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		9BFB315298F139E8C90B2765 /* AboutPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutPanel.swift; sourceTree = "<group>"; };
 		A3D2CEFD8EC82BEA131B66A8 /* PomodoroModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomodoroModel.swift; sourceTree = "<group>"; };
 		B279C3D45F5B2685DB4641D4 /* PomodoroSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomodoroSession.swift; sourceTree = "<group>"; };
 		B755FE0E9B05604B87E87A84 /* CubeTwentyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubeTwentyApp.swift; sourceTree = "<group>"; };
@@ -66,6 +68,7 @@
 		1F169E44C4D30575B0A6B292 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				9BFB315298F139E8C90B2765 /* AboutPanel.swift */,
 				3D4F18F2D45723A296F4E165 /* EyeBreakPanel.swift */,
 				D231C9EC07E187EAFD1E8513 /* EyeReminderSection.swift */,
 				68BFAC30797FBA281F0B5DA7 /* MenuBarContentView.swift */,
@@ -200,6 +203,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				637B8D505EC29A09C2F3FB82 /* AboutPanel.swift in Sources */,
 				B1F1C795220D8040BB461FD1 /* AppCoordinator.swift in Sources */,
 				58C0D38C9178744A51C7F277 /* CubeTwentyApp.swift in Sources */,
 				E8AB81CEC0C50B1AC31A8C5E /* EyeBreakPanel.swift in Sources */,
