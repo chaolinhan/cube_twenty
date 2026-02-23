@@ -89,6 +89,7 @@ final class EyeBreakPanelController: NSObject, NSWindowDelegate {
     // MARK: - 私有
 
     private func finishNaturally() {
+        NSSound(named: NSSound.Name("Glass"))?.play()
         NotificationService.shared.sendEyeBreakComplete()
         panel?.close()      // → windowWillClose → cancelTimer（幂等，安全）
         panel = nil
@@ -145,7 +146,7 @@ struct EyeBreakPanelView: View {
 
     var body: some View {
         VStack(spacing: 12) {
-            Text("👁")
+            Text("🌿")
                 .font(.system(size: 36))
 
             Text("看向远处")
