@@ -50,7 +50,7 @@ final class NotificationService {
         send(
             identifier: "eye-reminder-\(Date().timeIntervalSince1970)",
             title: "眼部休息提醒",
-            body: "请看向 6 米外，正在倒计时 20 秒 👁"
+            body: "请看向 6 米外，正在倒计时 20 秒"
         )
     }
 
@@ -58,7 +58,7 @@ final class NotificationService {
         send(
             identifier: "eye-break-complete-\(Date().timeIntervalSince1970)",
             title: "眼部休息完成",
-            body: "好了，可以回来了 ✅"
+            body: "好了，可以回来了"
         )
     }
 
