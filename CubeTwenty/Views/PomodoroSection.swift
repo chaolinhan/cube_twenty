@@ -4,6 +4,7 @@ import SwiftData
 struct PomodoroSection: View {
 
     @EnvironmentObject var model: PomodoroModel
+    @Environment(\.modelContext) private var modelContext
 
     // 今日完成的专注记录
     @Query(filter: #Predicate<PomodoroSession> { session in
@@ -36,12 +37,13 @@ struct PomodoroSection: View {
             }
         }
 
-        // 历史统计（有数据时显示）
+        // 查看统计按钮（有历史数据时显示）
         if !todaySessions.isEmpty || !weekSessions.isEmpty {
-            let todayCount = todaySessions.count
-            let weekCount  = weekSessions.count
-            Text("今日 \(todayCount) 个 · 本周 \(weekCount) 个 🍅")
-                .foregroundStyle(.secondary)
+            Button {
+                StatsPanelController.shared.show(container: modelContext.container)
+            } label: {
+                Label("查看统计...", systemImage: "chart.bar")
+            }
         }
     }
 

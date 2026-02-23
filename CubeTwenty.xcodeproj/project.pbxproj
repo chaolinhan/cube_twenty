@@ -19,6 +19,7 @@
 		DFC4F4377E5C770B838044F5 /* PomodoroSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EFF4DB1778C00664C8734B /* PomodoroSection.swift */; };
 		E77BBE4BAC39205D39155503 /* PomodoroModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D2CEFD8EC82BEA131B66A8 /* PomodoroModel.swift */; };
 		E8AB81CEC0C50B1AC31A8C5E /* EyeBreakPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4F18F2D45723A296F4E165 /* EyeBreakPanel.swift */; };
+		F821CF275FFBBD7BE49F886D /* StatsPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20D0ED16F793370E7822456 /* StatsPanel.swift */; };
 		FA04E327F43EF0C599746F0D /* MenuBarContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BFAC30797FBA281F0B5DA7 /* MenuBarContentView.swift */; };
 		FE98D141F1E9A0F348CEAAF8 /* EyeReminderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F98CE184E58BC896E405BEF /* EyeReminderModel.swift */; };
 		FF74EDC2306551BB0D044AAB /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380691FB98019AE64AD6BAC1 /* NotificationService.swift */; };
@@ -36,6 +37,7 @@
 		7D4A093A455533DBA2ABACE7 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		9AFE4539AA2CA6DBD2EF4196 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		9BFB315298F139E8C90B2765 /* AboutPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutPanel.swift; sourceTree = "<group>"; };
+		A20D0ED16F793370E7822456 /* StatsPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsPanel.swift; sourceTree = "<group>"; };
 		A3D2CEFD8EC82BEA131B66A8 /* PomodoroModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomodoroModel.swift; sourceTree = "<group>"; };
 		B279C3D45F5B2685DB4641D4 /* PomodoroSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomodoroSession.swift; sourceTree = "<group>"; };
 		B755FE0E9B05604B87E87A84 /* CubeTwentyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubeTwentyApp.swift; sourceTree = "<group>"; };
@@ -74,6 +76,7 @@
 				68BFAC30797FBA281F0B5DA7 /* MenuBarContentView.swift */,
 				49EFF4DB1778C00664C8734B /* PomodoroSection.swift */,
 				9AFE4539AA2CA6DBD2EF4196 /* SettingsView.swift */,
+				A20D0ED16F793370E7822456 /* StatsPanel.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -216,6 +219,7 @@
 				0187C5D5C58475E903B96A14 /* PomodoroSession.swift in Sources */,
 				2A67B5A3115309545FB52570 /* SettingsView.swift in Sources */,
 				368B6ADE289F75660467D0D8 /* SparkleUpdater.swift in Sources */,
+				F821CF275FFBBD7BE49F886D /* StatsPanel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
