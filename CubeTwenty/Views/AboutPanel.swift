@@ -94,7 +94,7 @@ struct AboutPanelView: View {
 
             Spacer().frame(height: 4)
 
-            Text("© 2025 LTN Studio")
+            Text("© 2026 LTN Studio")
                 .font(.caption)
                 .foregroundStyle(.tertiary)
 
